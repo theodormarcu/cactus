@@ -1,0 +1,70 @@
+.container {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  position: relative;
+  perspective: 75px;
+  perspective-origin: 50% 40%;
+  display: inline-block;
+  float: left; }
+
+.side {
+  position: absolute;
+  left: 35px;
+  top: 37.5px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid #ccc;
+  transform-origin: 50% 0%;
+  animation: spin 5s infinite linear; }
+
+.back {
+  animation-delay: -2.5s; }
+
+.right {
+  animation-delay: -1.25s; }
+
+.left {
+  animation-delay: -3.75s; }
+
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg) rotateX(30deg);
+    border-bottom-color: #9b50ba; }
+  25% {
+    transform: rotateY(90deg) rotateX(30deg);
+    border-bottom-color: #7f3d9b;
+    opacity: 1; }
+  25.1% {
+    opacity: 0; }
+  50% {
+    transform: rotateY(180deg) rotateX(30deg);
+    border-bottom-color: #6a3381; }
+  74.9% {
+    opacity: 0; }
+  75% {
+    transform: rotateY(270deg) rotateX(30deg);
+    border-bottom-color: #612e76;
+    opacity: 1; }
+  100% {
+    transform: rotateY(360deg) rotateX(30deg);
+    border-bottom-color: #9b50ba; } }
+.shadow {
+  position: absolute;
+  top: 300px;
+  left: 175px;
+  width: 50px;
+  height: 50px;
+  background-color: #bbb;
+  box-shadow: 0 0 40px 40px #bbb;
+  animation: shadow 5s infinite linear; }
+
+@keyframes shadow {
+  0% {
+    transform: rotateX(90deg) rotateZ(0deg); }
+  100% {
+    transform: rotateX(90deg) rotateZ(-360deg); } }
+
+/*# sourceMappingURL=pyramid.css.map */

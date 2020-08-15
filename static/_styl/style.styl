@@ -42,9 +42,12 @@ body
   min-height: 100%
   overflow-wrap: break-word
 
-  p
-    hyphens(auto)
+  .content p
+    hyphens(normal)
+    font-family: $font-family-paragraph
 
+  #about p
+    font-family: $font-family-body
   code
     hyphens(manual)
 
