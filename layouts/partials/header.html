@@ -6,8 +6,7 @@
     <div id="logo" style="background-image: url({{ .Site.Params.logo }})"></div>
   {{ else }}
   {{ end}}
-  <div id="navbar">
-  <div id="title" class="custom-background">
+  <div id="title">
     <h1 class="">{{ .Site.Title }}</h1>
   </div>
   </a>
@@ -20,7 +19,6 @@
         <li><a href="{{ .URL }}">{{ .Name }}</a></li>
       {{ end }}
     </ul>
-  </div>
   </div>
 </header>
   

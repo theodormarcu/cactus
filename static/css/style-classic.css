@@ -1069,7 +1069,7 @@ body {
   list-style: none;
 }
 .project-list .project-item {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 .project-list .project-item p {
   display: inline;
@@ -1245,7 +1245,7 @@ article .content .caption {
   margin-top: 4rem;
 }
 #footer {
-  position: absolute;
+  position: block;
   bottom: 0;
   margin-bottom: 10px;
   width: 100%;
@@ -1304,6 +1304,10 @@ article .content .caption {
   }
   #footer .footer-right {
     align-self: flex-end;
+  }
+  #footer .footer-subscribe {
+    width: 100%;
+    min-height: 50px;
   }
 }
 .pagination {
