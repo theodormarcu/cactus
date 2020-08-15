@@ -2,9 +2,14 @@
   <section id="about">
   {{ if isset .Site.Params "description" }}
     {{ .Site.Params.description }}
+  {{ else }}
+    <p>Hi! Welcome to my little corner of the internet. My name is Theodor Marcu. I'm currently a software engineer at Bubble.io. I also started <a href="https://representable.org">Representable.org</a>, a tech nonprofit that helps organizations fight gerrymandering across the US.
+    </p>    
+    <p>Before this, I was an APM Intern at Google and a Solutions Engineering Intern at Orbital Insight. I graduated Summa Cum Laude from Princeton, where I studied CS.
+    </p>
   {{ end }}
   {{ if isset .Site.Params "social" }}
-      <p>Find me on
+      <p>Find me on:
       {{ $length := (len .Site.Params.social) }}
       {{ range $index, $elem := .Site.Params.social}}
       {{ if eq $elem.name "email" }}
@@ -17,24 +22,16 @@
         </a>
         {{ else }}
         <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}">
-          <i class="fab fa-{{ lower $elem.name }}"></i>
+         <i class="fab fa-{{ lower $elem.name }}"></i>
         </a>
         {{ end }}
-        {{ if (lt (add $index 2) $length) }}
-          {{- print " , " -}}
-        {{ else if (lt (add $index 1) $length) }}
-          {{- print " and " -}}
-        {{ else }}
-          {{- print "." -}}
-        {{ end }}
-      {{ end }}
-      </p>
+      {{ end }}</p>
   {{ end }}
   </section>
 
   <section id="writing">
     <!-- TODO: use built in mainSections parameter https://gohugo.io/functions/where/#mainsections -->
-    <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">Writings</a></span>
+    <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">Blog</a></span>
     {{ if (and (and (isset .Site.Params "tagsoverview") (eq .Site.Params.tagsOverview true)) (gt (len .Site.Taxonomies.tags) 0)) }}
     <span class="h2">Topics</span>
     <span class="widget tagcloud">
@@ -71,7 +68,7 @@
       {{ if isset .Site.Params "postsonhomepage" }}
         {{ .Scratch.Set "count" .Site.Params.postsOnHomePage }}
       {{ end }}
-      {{ range (first (.Scratch.Get "count") (sort .Site.RegularPages "Date" "desc")) }}
+      {{ range (first (.Scratch.Get "count") (sort (where .Site.RegularPages "Type" "=" "blog") "Date" "desc"))}}
         <li class="post-item">
           <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
           <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
@@ -97,7 +94,7 @@
     <ul class="project-list">
         {{ range .Site.Data.projects.list }}
         <li class="project-item">
-          <a href="{{ .url }}">{{ .name }}</a>: {{ .desc | markdownify }}
+          <a href="{{ .url }}" target="_blank">{{ .name }}</a>: {{ .desc | markdownify }}
         </li>
         {{ end }}
     </ul>
